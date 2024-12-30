@@ -13,6 +13,7 @@ Welcome to ToDo Tasks
 options: add, show, edit, complete, exit
 example: add do the dishes
 """
+print("The Time is now: ")
 print("It is: ", now)
 print(Intro_Text)
 
