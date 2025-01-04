@@ -4,7 +4,9 @@ Created on Sat Dec 14 16:12:15 2024
 
 @author: frost
 """
-def get_todos(filepath="todos.txt"):
+FILEPATH = "todos.txt"
+
+def get_todos(filepath=FILEPATH):
     """Retrieves to-do list from default file"""
     with open(filepath, 'r') as file_local:
         todos_local = file_local.readlines()
