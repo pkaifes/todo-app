@@ -7,12 +7,14 @@ inp_Todo = FSGUI.InputText(tooltip="Enter todo", key="todo")
 btn_add = FSGUI.Button("Add")
 lst_todos = FSGUI.Listbox(values=functions.get_todos(), key="todos", enable_events=True, size=[45, 10])
 btn_edit = FSGUI.Button("Edit")
-
+btn_complete = FSGUI.Button("Complete")
+btn_exit = FSGUI.Button("Exit")
 window = FSGUI.Window('My To-Do App',
                       layout=[
                           [lbl_Intro],
                           [inp_Todo, btn_add],
-                          [lst_todos, btn_edit]
+                          [lst_todos, btn_edit, btn_complete],
+                          [btn_exit]
                       ],
                       font=("Helvetica", 20)
                       )
@@ -45,6 +47,17 @@ while True:
         case "todos":
             window["todo"].update(value=values["todos"][0])
             #print("seen todos")
+        case "Complete":
+            todo_to_complete = values["todos"][0]
+            todos = functions.get_todos()
+            todos.remove(todo_to_complete)
+            functions.write_todos(todos)
+
+            window["todos"].update(values=todos)
+            window["todo"].update(value="")
+
+        case "Exit":
+            break
         case FSGUI.WIN_CLOSED:
             break
 
